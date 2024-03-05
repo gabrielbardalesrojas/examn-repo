@@ -1,0 +1,38 @@
+@startuml
+
+entity Autor {
+  + Nombre
+  + Bibliografía
+  + Edad
+}
+
+entity Libro {
+  + Título
+}
+
+entity Categoria {
+  + Nombre
+}
+
+entity Reserva {
+}
+
+entity Reseña {
+  + Comentario
+}
+
+entity Usuario {
+  + Nombre
+  + Correo
+  + Contraseña
+}
+
+Autor -- "1-*" Libro : puede tener muchos libros
+Libro -- "0-*" Categoria : puede pertenecer a muchas categorías
+Libro -- "0-1" Reserva : puede pertenecer a una reserva
+Libro -- "0-*" Reseña : puede tener varias reseñas
+Usuario -- "1-*" Reseña : puede hacer una reseña por libro
+Usuario -- "0-*" Reserva : puede hacer varias reservas de libros
+Reserva -- "1-*" Autor : puede tener un autor por libro
+
+@enduml
